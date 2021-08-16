@@ -17,6 +17,8 @@ void PrintInfo(employeeComp Var1);
 
 int main(){
     employeeComp Emp1;
+    Emp1.score =0;
+    Emp1.streak =0;
     GetInfo(Emp1.firstname, Emp1.lastname, Emp1.score , Emp1.streak);
     printf("2)Employee: %s %s, Score: %d, Streak(days): %d\n", Emp1.firstname, Emp1.lastname, Emp1.score, Emp1.streak);
     //PrintInfo(Emp1);

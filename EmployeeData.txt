@@ -4,3 +4,5 @@ Employee:  , Score: 0, Streak(days): 1335034816
 Employee:  , Score: 0, Streak(days): -1259510800
 Employee:  , Score: 0, Streak(days): 1133847632
 Employee:  , Score: 0, Streak(days): 79111216
+Employee: c e, Score: 0, Streak(days): 1386107936
+Employee: l c, Score: 0, Streak(days): 1536386128
