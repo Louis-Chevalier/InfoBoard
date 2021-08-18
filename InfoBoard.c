@@ -28,18 +28,23 @@ int main(){
     return 0;
 }
 
+//Gets the information from user about employee name, lastname, their score, and daily score
 void GetInfo(char pre[Fname], char nom[Lname], int *num, int *record){
-    int num2,record2;
+    //int num2,record2;
     printf("Please enter the first name: ");
     fgets(pre, Fname, stdin);
     printf("Please enter the last name: ");
     fgets(nom, Lname, stdin);
     printf("Please enter the score: ");
-    scanf("%d", &num2);
+    scanf("%d", &*num);
     printf("Please enter any streak held (in days): ");
-    scanf("%d", &record2);
-    *num = num2;
-    *record = record2;
+    scanf("%d", &*record);
+
+    //would have done scanf("%d", &num2); but the above code avoids the declaration of two new ints
+    //the idea is to scanf a value into the variable pointed by num( which contains the address of Emp1.score)
+    // while still keeping the & character so that the compiler doesnt return an error
+    //*num = num2;
+    //*record = record2;
 
     //Replace "\n" with "\0" at the end of each string
     pre[strcspn(pre,"\n")] = 0;
