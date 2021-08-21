@@ -3,6 +3,7 @@
 #include <string.h>
 #define Fname 20
 #define Lname 30
+#define lineLen 100
 
 typedef struct {
     char firstname[Fname];
@@ -59,6 +60,15 @@ void PrintInfo(employeeComp Var2){
     fptr = fopen("EmployeeData.txt", "a");
     fprintf(fptr,"Employee: %s %s, Score: %d, Streak(days): %d\n", Var2.firstname, Var2.lastname, Var2.score, Var2.streak);
     fclose(fptr);
+}
+
+void ReadList(employeeComp Var2){
+    FILE *fptr;
+    if ((fpt = fopen("EmployeeData.txt"), "r") == NULL){
+        printf("ERROR! File not found");
+        exit(1);
+    }
+    fgets();
 }
 
 //Now print onto a file
