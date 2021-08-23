@@ -15,11 +15,14 @@ typedef struct {
 void CreateNewFile();//Create and format the new file
 void GetInfo(char pre[Fname], char nom[Lname], int* num, int* record);
 void PrintInfo(employeeComp Var1);
+void CreateSpaces(char strgot[Lname], FILE *fptrBuff);//Makes spaces to represent empty chars in a string
 
 int main(){
     employeeComp Emp1;
     Emp1.score =0;
     Emp1.streak =0;
+
+    CreateNewFile();
     GetInfo(Emp1.firstname, Emp1.lastname, &Emp1.score , &Emp1.streak);
 
     //For debugging purposes
@@ -57,8 +60,11 @@ void GetInfo(char pre[Fname], char nom[Lname], int *num, int *record){
 
 void CreateNewFile(){
     FILE *fptr;
-    if ((fpt = fopen("EmployeeData.txt"), "w") == NULL){
-        fprintf(fptr, "Employee Name | Score | Streak |");
+    if (fptr = fopen("EmployeeData.txt", "w") == NULL){
+        fprintf(fptr, "               Employee Name                     | Score | Streak |\n");
+    }else{
+        fclose(fptr);
+        return 0;
     }
 
     fclose(fptr);
@@ -67,13 +73,16 @@ void CreateNewFile(){
 void PrintInfo(employeeComp Var2){
     FILE *fptr;
     fptr = fopen("EmployeeData.txt", "a");
-    fprintf(fptr,"%s, %s | %d | %d |\n", Var2.firstname, Var2.lastname, Var2.score, Var2.streak);
+    CreateSpaces(Var2.firstname, fptr);
+    CreateSpaces(Var2.lastname, fptr);
+    fprintf(fptr, "  %d   |   %d   |\n", Var2.score, Var2.streak);
+    //fprintf(fptr,"%s, %s | %d | %d |\n", Var2.firstname, Var2.lastname, Var2.score, Var2.streak);
     fclose(fptr);
 }
 
 void ReadList(employeeComp Var2){
     FILE *fptr;
-    if ((fpt = fopen("EmployeeData.txt"), "r") == NULL){
+    if (fptr = fopen("EmployeeData.txt", "r") == NULL){
         printf("ERROR! File not found(file pointer is NULL)\n");
         exit(1);
     }
@@ -82,4 +91,12 @@ void ReadList(employeeComp Var2){
     fclose(fptr);
 }
 
-//Now print onto a file
+void CreateSpaces(char strgot[Lname], FILE *fptrBuff){
+    fprintf(fptrBuff, "%s", strgot);
+
+    for (int i=0; i<(Fname - strlen(strgot));i++){
+        fprintf(fptrBuff," ");
+    }
+
+    fprintf(fptrBuff,"|");
+}
