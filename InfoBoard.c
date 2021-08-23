@@ -55,20 +55,31 @@ void GetInfo(char pre[Fname], char nom[Lname], int *num, int *record){
     //printf("1)Employee: %s %s, Score: %d, Streak(days): %d\n", pre, nom, num, record);
 }
 
+void CreateNewFile(){
+    FILE *fptr;
+    if ((fpt = fopen("EmployeeData.txt"), "w") == NULL){
+        fprintf(fptr, "Employee Name | Score | Streak |");
+    }
+
+    fclose(fptr);
+}
+
 void PrintInfo(employeeComp Var2){
     FILE *fptr;
     fptr = fopen("EmployeeData.txt", "a");
-    fprintf(fptr,"Employee: %s %s, Score: %d, Streak(days): %d\n", Var2.firstname, Var2.lastname, Var2.score, Var2.streak);
+    fprintf(fptr,"%s, %s | %d | %d |\n", Var2.firstname, Var2.lastname, Var2.score, Var2.streak);
     fclose(fptr);
 }
 
 void ReadList(employeeComp Var2){
     FILE *fptr;
     if ((fpt = fopen("EmployeeData.txt"), "r") == NULL){
-        printf("ERROR! File not found");
+        printf("ERROR! File not found(file pointer is NULL)\n");
         exit(1);
     }
-    fgets();
+    //fgets(fptr);
+    //Work in Progress
+    fclose(fptr);
 }
 
 //Now print onto a file
