@@ -12,28 +12,29 @@ typedef struct {
     int streak;//in days
 }employeeComp;
 
-void CreateNewFile();//Create and format the new file
-void GetInfo(char pre[Fname], char nom[Lname], int* num, int* record);
-void PrintInfo(employeeComp Var1);
-void CreateSpaces(char strgot[Lname], FILE *fptrBuff);//Makes spaces to represent empty chars in a string
+void createNewFile();//Create and format the new file
+void getInfo(char pre[Fname], char nom[Lname], int* num, int* record);
+void printInfo(employeeComp Var1);
+void createSpaces(char strgot[Lname], FILE *fptrBuff);//Makes spaces to represent empty chars in a string
 
 int main(){
     employeeComp Emp1;
     Emp1.score =0;
     Emp1.streak =0;
 
-    CreateNewFile();
-    GetInfo(Emp1.firstname, Emp1.lastname, &Emp1.score , &Emp1.streak);
+    //CreateNewFile();
+    getInfo(Emp1.firstname, Emp1.lastname, &Emp1.score , &Emp1.streak);
 
     //For debugging purposes
     //printf("2)Employee: %s %s, Score: %d, Streak(days): %d\n", Emp1.firstname, Emp1.lastname, Emp1.score, Emp1.streak);
 
-    PrintInfo(Emp1);
+    printInfo(Emp1);
+    readList(Emp1);
     return 0;
 }
 
 //Gets the information from user about employee name, lastname, their score, and daily score
-void GetInfo(char pre[Fname], char nom[Lname], int *num, int *record){
+void getInfo(char pre[Fname], char nom[Lname], int *num, int *record){
     //int num2,record2;
     printf("Please enter the first name: ");
     fgets(pre, Fname, stdin);
@@ -58,7 +59,7 @@ void GetInfo(char pre[Fname], char nom[Lname], int *num, int *record){
     //printf("1)Employee: %s %s, Score: %d, Streak(days): %d\n", pre, nom, num, record);
 }
 
-void CreateNewFile(){
+void createNewFile(){
     FILE *fptr;
     if (fptr = fopen("EmployeeData.txt", "w") == NULL){
         fprintf(fptr, "               Employee Name                     | Score | Streak |\n");
@@ -70,28 +71,35 @@ void CreateNewFile(){
     fclose(fptr);
 }
 
-void PrintInfo(employeeComp Var2){
+void printInfo(employeeComp Var2){
     FILE *fptr;
     fptr = fopen("EmployeeData.txt", "a");
-    CreateSpaces(Var2.firstname, fptr);
-    CreateSpaces(Var2.lastname, fptr);
-    fprintf(fptr, "  %d   |   %d   |\n", Var2.score, Var2.streak);
+    createSpaces(Var2.firstname, fptr);
+    createSpaces(Var2.lastname, fptr);
+    fprintf(fptr, "  %10d   |   %3d   |\n", Var2.score, Var2.streak);
     //fprintf(fptr,"%s, %s | %d | %d |\n", Var2.firstname, Var2.lastname, Var2.score, Var2.streak);
     fclose(fptr);
 }
 
-void ReadList(employeeComp Var2){
+void readList(employeeComp Var2){
     FILE *fptr;
+    char teststr[100];
     if (fptr = fopen("EmployeeData.txt", "r") == NULL){
         printf("ERROR! File not found(file pointer is NULL)\n");
         exit(1);
     }
     //fgets(fptr);
     //Work in Progress
+
+    while(fgets(teststr, strlen(teststr), fptr)){
+        //print the line as a whole
+        printf("%s", teststr);
+    }
+
     fclose(fptr);
 }
 
-void CreateSpaces(char strgot[Lname], FILE *fptrBuff){
+void createSpaces(char strgot[Lname], FILE *fptrBuff){
     fprintf(fptrBuff, "%s", strgot);
 
     for (int i=0; i<(Fname - strlen(strgot));i++){
