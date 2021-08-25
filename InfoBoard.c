@@ -29,7 +29,7 @@ int main(){
     //printf("2)Employee: %s %s, Score: %d, Streak(days): %d\n", Emp1.firstname, Emp1.lastname, Emp1.score, Emp1.streak);
 
     printInfo(Emp1);
-    readList(Emp1);
+    //readList(Emp1);
     return 0;
 }
 
@@ -93,8 +93,10 @@ void readList(employeeComp Var2){
     }else{
         //fgets(fptr);
         //Work in Progress
-        printf("else");
-        while(feof(fptr)){
+        printf("else\n");
+        fgets(teststr,strlen(teststr), fptr);
+        printf("%s\n", teststr);
+        while(!feof(fptr)){
             //print the line as a whole
             printf("Accessed");
             fgets(teststr,strlen(teststr), fptr);
