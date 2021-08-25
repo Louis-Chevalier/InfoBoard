@@ -22,7 +22,7 @@ int main(){
     Emp1.score =0;
     Emp1.streak =0;
 
-    //CreateNewFile();
+    createNewFile();
     getInfo(Emp1.firstname, Emp1.lastname, &Emp1.score , &Emp1.streak);
 
     //For debugging purposes
@@ -61,14 +61,16 @@ void getInfo(char pre[Fname], char nom[Lname], int *num, int *record){
 
 void createNewFile(){
     FILE *fptr;
-    if (fptr = fopen("EmployeeData.txt", "w") == NULL){
+    fptr = fopen("EmployeeData.txt", "r+");
+    if (fptr == NULL){
+        fclose(fptr);
+        fptr = fopen("EmployeeData.txt", "w");
         fprintf(fptr, "               Employee Name                     | Score | Streak |\n");
+        fclose(fptr);
     }else{
         fclose(fptr);
         return 0;
     }
-
-    fclose(fptr);
 }
 
 void printInfo(employeeComp Var2){
