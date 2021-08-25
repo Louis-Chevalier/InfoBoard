@@ -65,7 +65,7 @@ void createNewFile(){
     if (fptr == NULL){
         fclose(fptr);
         fptr = fopen("EmployeeData.txt", "w");
-        fprintf(fptr, "               Employee Name                     | Score | Streak |\n");
+        fprintf(fptr, "           Employee Name                 |     Score     |  Streak |\n");
         fclose(fptr);
     }else{
         fclose(fptr);
@@ -88,17 +88,22 @@ void readList(employeeComp Var2){
     char teststr[100];
     if (fptr = fopen("EmployeeData.txt", "r") == NULL){
         printf("ERROR! File not found(file pointer is NULL)\n");
+        //printf("exit"); //debug
         exit(1);
-    }
-    //fgets(fptr);
-    //Work in Progress
-
-    while(fgets(teststr, strlen(teststr), fptr)){
-        //print the line as a whole
-        printf("%s", teststr);
-    }
+    }else{
+        //fgets(fptr);
+        //Work in Progress
+        printf("else");
+        while(feof(fptr)){
+            //print the line as a whole
+            printf("Accessed");
+            fgets(teststr,strlen(teststr), fptr);
+            printf("%s\n", teststr);
+            printf("printed");
+        }
 
     fclose(fptr);
+    }
 }
 
 void createSpaces(char strgot[Lname], FILE *fptrBuff){
