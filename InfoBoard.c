@@ -29,7 +29,7 @@ int main(){
     //printf("2)Employee: %s %s, Score: %d, Streak(days): %d\n", Emp1.firstname, Emp1.lastname, Emp1.score, Emp1.streak);
 
     printInfo(Emp1);
-    //readList(Emp1);
+    readList(Emp1);
     return 0;
 }
 
@@ -96,12 +96,10 @@ void readList(employeeComp Var2){
         printf("else\n");
         fgets(teststr,strlen(teststr), fptr);
         printf("%s\n", teststr);
-        while(!feof(fptr)){
+        while(fgets(teststr,sizeof(teststr), fptr) != NULL){
             //print the line as a whole
-            printf("Accessed");
-            fgets(teststr,strlen(teststr), fptr);
-            printf("%s\n", teststr);
-            printf("printed");
+            //Learn getline() func
+            fputs(teststr,stdout);
         }
 
     fclose(fptr);
