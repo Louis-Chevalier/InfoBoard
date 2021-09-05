@@ -1,9 +1,8 @@
            Employee Name                 |     Score     |  Streak |
-re                  |tr                  |          43   |     2   |
-rew                 |re                  |          43   |     2   |
-lor                 |ew                  |          33   |     2   |
-rew                 |rew                 |           4   |     3   |
-rew                 |rt                  |         435   |     3   |
-re                  |wr                  |           3   |     4   |
-re                  |ew                  |         432   |     3   |
-432                 |4                   |         432   |    43   |
+Ivan                |Ilitrov             |         937   |    34   |
+Isaac               |Koslaw              |         546   |     3   |
+Organa              |Trovalt             |         456   |    32   |
+Yakovich            |Vladislav           |          32   |     5   |
+Yes                 |Man                 |         352   |     1   |
+Lochae              |Read                |         432   |     5   |
+Marge               |Simpson             |         432   |     1   |

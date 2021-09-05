@@ -30,6 +30,7 @@ int main(){
 
     printInfo(Emp1);
     readList(Emp1);
+
     return 0;
 }
 
@@ -85,25 +86,14 @@ void printInfo(employeeComp Var2){
 
 void readList(employeeComp Var2){
     FILE *fptr;
-    char teststr[100];
-    if (fptr = fopen("EmployeeData.txt", "r") == NULL){
-        printf("ERROR! File not found(file pointer is NULL)\n");
-        //printf("exit"); //debug
-        exit(1);
-    }else{
-        //fgets(fptr);
-        //Work in Progress
-        printf("else\n");
-        fgets(teststr,strlen(teststr), fptr);
-        printf("%s\n", teststr);
-        while(fgets(teststr,sizeof(teststr), fptr) != NULL){
-            //print the line as a whole
-            //Learn getline() func
-            fputs(teststr,stdout);
-        }
-
-    fclose(fptr);
+    char teststr[lineLen];
+    fptr = fopen("EmployeeData.txt", "r");
+    while(!feof(fptr)){
+        fgets(teststr,lineLen,fptr);
+        printf("%s", teststr);
+        //For some reason the last line is repeated
     }
+    fclose(fptr);
 }
 
 void createSpaces(char strgot[Lname], FILE *fptrBuff){
